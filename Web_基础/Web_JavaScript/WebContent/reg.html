@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="script/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#sub").click(function(){
+			var username = $("#username").val();
+			alert(username);
+			//设置一个正则表达式 验证用户名是否符合规则
+			var userReg = /^[a-zA-Z0-9_-]{3, 6}/;
+			//验证用户名是否符合规则
+			var flag = userReg.test(username);
+			//alert(flag);
+			if(!flag){
+				return false;
+			}		
+		});
+	});
+</script>
+</head>
+<body>
+<form action="" method="post">
+		用户名: <input type="text" name="username" id="username"><br>
+		<input type="submit" value="登录" id="sub"><br>
+</form>
+</body>
+</html>

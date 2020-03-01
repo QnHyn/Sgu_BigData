@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>xiaoxiao</title>
+<script type="text/javascript" src="script/jquery-1.7.2.min.js"></script>
+<script>
+	// 1.Java对象
+	//属性名必须使用双引号括起来;属性名和属性值之间使用冒号分隔;多个属性之间使用逗号分隔
+	var jsonObj = {"name":"孙悟空", "age":"520"};
+	// alert(jsonObj);
+	//alert(jsonObj.name);
+	// 2.Java数组
+	//获取JSON数组中的第五个元素中的age属性值
+	var jsonArray = ["猪八戒", 1000, false, null, jsonObj]
+	//alert(jsonArray[4].age);
+	// 创建一个复杂的json对象
+	var fzJson = {
+					"name":"唐僧", 
+					"age":"18", 
+					"sons":[
+						{"name":"孙悟空"},
+						{"name":"猪八戒", "wives":[
+							{"name":"小红"},
+							{"name":"小兰"},
+							{"name":"小萨"}
+						]},
+						{"name":"沙悟净"},
+						{"name":"白龙马"}
+					]
+	};
+	// 获取猪八戒第三个媳妇
+	//alert(fzJson.sons[1].wives[2].name);
+	// 将JSON对象转换成JSON字符串
+	var objToStr = JSON.stringify(jsonObj);
+	//alert(objToStr);
+	// 将JSON字符串转换为json对象
+	var StrToobj = JSON.parse(objToStr);
+	//alert(StrToobj);
+	$(function(){
+		// 给按钮绑定单机事件
+		$("#btnId").click(function(){
+			// 设置请求地址
+			var url = "JsonServlet";
+			// 发送Ajax请求
+			//$.get(url, function(res){
+			//	alert(res);
+			//});
+			// 直接转为json对象
+			$.get(url, function(res){
+				alert(res);
+			}, "json");
+		});
+	});
+</script>
+</head>
+<body>
+<button id="btnId">发送Ajax请求, 接收JSON格式的响应数据</button>
+</body>
+</html>
